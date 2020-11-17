@@ -39,8 +39,7 @@ Home IOT Service development
 
 ### 4. MySQL 실행하기
 ---------
-#### 초기 root 사용자 접속허용 및 비밀번호 설정이 되어있지 않기 때문에 
-####관리자 권한을 이용하여 실행하여야 합니다.
+#### 초기 root 사용자 접속허용 및 비밀번호 설정이 되어있지 않기 때문에 관리자 권한을 이용하여 실행하여야 합니다.
 
   >sudo mysql
 
@@ -78,7 +77,7 @@ Home IOT Service development
 
 ### 6. 접근 가능한 host 추가
 ------------
-####localhost 이외의 사용자가 사용할 수 있게 접근 가능한 host 를 리스트에 추가해주어야 합니다.
+#### localhost 이외의 사용자가 사용할 수 있게 접근 가능한 host 를 리스트에 추가해주어야 합니다.
 
   >MariaDB[mysql]> grant all privileges on *.*'root'@'%' identified by '[패스워드]';
 
