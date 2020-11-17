@@ -118,3 +118,8 @@ Home IOT Service development
   MariaDB[mysql]> flush privileges;
 ```
 #### 이로써 관리자 권한 없이도 root 비밀번호를 통해 데이터베이스에 접근이 가능해졌습니다.
+```
+  $ mysql -u root -p
+  Enter password:
+```
+#### 비밀번호 입력 후 정상적으로 데이터베이스에 접근할 수 있습니다.
