@@ -44,11 +44,12 @@ Home IOT Service development
 ```
   sudo mysql
 ```
+##### mysql 실행 후 sql 명령어를 이용할 땐 반드시 세미콜론(';')을 넣어야 해당 문장이 실행됩니다
 #### DB 리스트 확인
  ```
   show databases;
 ```
-##### sql 명령어를 이용할 땐 반드시 세미콜론(';')을 넣어야 해당 문장이 실행됩니다.
+.
 ```
   MariaDB[(none)]> use mysql;
 ```
