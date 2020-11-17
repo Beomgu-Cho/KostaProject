@@ -97,7 +97,7 @@ Home IOT Service development
   sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
 ```
 #### nano 편집기를 이용하여 bind-address = 127.0.0.1 로 되어있는 부분을 주석처리 합니다.
-#### bind-address = 127.0.0.1 ==> # bind-address = 127.0.0.1
+##### **bind-address = 127.0.0.1 ==> # bind-address = 127.0.0.1**
 
 #### 수정이 완료되면 ctrl + x, y, enter를 차례로 입력하여 빠져나옵니다.
 
