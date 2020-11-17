@@ -26,7 +26,7 @@ Home IOT Service development
   sudo apt-get autoclean -y
   sudo rm -rf /usr/sbin/mysqld /var/run/mysqld /etc/mysql
 ```
-### 주의!! rm -rf 명령어는 강제 삭제 명령이기 때문에 오타에 신경써야합니다.
+###### 주의!! rm -rf 명령어는 강제 삭제 명령이기 때문에 오타에 신경써야합니다.
 
 
 
