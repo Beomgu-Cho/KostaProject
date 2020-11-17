@@ -13,18 +13,18 @@ Home IOT Service development
 ---------
 #### apt-get update, apt-get upgrade 명령어를 우선 진행합니다.
 ```
-  sudo apt-get update -y
-  sudo apt-get upgrade -y
+  $ sudo apt-get update -y
+  $ sudo apt-get upgrade -y
 ```
 
 
 ### 2. 설치되어있을지도 모르는 mysql, mariadb 및 디렉터리 제거
 ----------
 ```
-  sudo apt-get purge mysql* mariadb* -y
-  sudo apt-get autoremove -y
-  sudo apt-get autoclean -y
-  sudo rm -rf /usr/sbin/mysqld /var/run/mysqld /etc/mysql
+  $ sudo apt-get purge mysql* mariadb* -y
+  $ sudo apt-get autoremove -y
+  $ sudo apt-get autoclean -y
+  $ sudo rm -rf /usr/sbin/mysqld /var/run/mysqld /etc/mysql
 ```
 ###### 주의!! rm -rf 명령어는 강제 삭제 명령이기 때문에 오타에 신경써야합니다.
 
@@ -34,7 +34,7 @@ Home IOT Service development
 -----------
 #### MariaDB와 관련된 패키지는 apt-cache search mariadb 로 확인이 가능합니다.
 ```
-  sudo apt-get install mariadb-server -y
+  $ sudo apt-get install mariadb-server -y
 ```
 
 
@@ -42,11 +42,11 @@ Home IOT Service development
 ---------
 #### 초기 root 사용자 접속허용 및 비밀번호 설정이 되어있지 않기 때문에 관리자 권한을 이용하여 실행하여야 합니다.
 ```
-  sudo mysql
+  $ sudo mysql
 ```
 ##### mysql 실행 후 sql 명령어를 이용할 땐 반드시 세미콜론(';')을 넣어야 해당 문장이 실행됩니다
 #### DB 리스트 확인
- ```
+```
   MariaDB[(none)]> show databases;
 ```
 #### mysql 데이터베이스에 접속
@@ -93,7 +93,7 @@ Home IOT Service development
 ### 7. 50-server.cnf 수정
 -----------
 ```
-  sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+  $ sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
 ```
 #### nano 편집기를 이용하여 bind-address = 127.0.0.1 로 되어있는 부분을 주석처리 합니다.
 ##### **bind-address = 127.0.0.1 ==> # bind-address = 127.0.0.1**
@@ -102,13 +102,19 @@ Home IOT Service development
 
 
 
-### 8. Plugin 확인
+### 8. Plugin 확인 및 변경
 ----------
 #### 다시 sql로 들어가 위에서 확인했던 table 에서 plugin을 확인합니다.
 ```
-  sudo mysql
+  $ sudo mysql
 ```
 ```
   MariaDB[(none)]> use mysql
   MariaDB[mysql]> select host, user, plugin from user;
 ```
+#### unix_socket 플러그인을 설정한 root 비밀번호로 접속할 수 있도록 수정합니다.
+```
+  MariaDB[mysql]> update user set plugin='mysql_native_password' where user='root';
+  MariaDB[mysql]> flush privileges;
+```
+#### 이로써 관리자 권한 없이도 root 비밀번호를 통해 데이터베이스에 접근이 가능해졌습니다.
