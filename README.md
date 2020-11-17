@@ -47,13 +47,12 @@ Home IOT Service development
 ##### mysql 실행 후 sql 명령어를 이용할 땐 반드시 세미콜론(';')을 넣어야 해당 문장이 실행됩니다
 #### DB 리스트 확인
  ```
-  show databases;
+  MariaDB[(none)]> show databases;
 ```
-.
+#### mysql 데이터베이스에 접속
 ```
   MariaDB[(none)]> use mysql;
 ```
-#### mysql 데이터베이스에 접속
 #### 접속에 성공하면 MariaDB[(none)] 이
 #### MariaDB[mysql] 로 바뀝니다.
 ```
