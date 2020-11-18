@@ -143,7 +143,7 @@ Home IOT Service development
   Enter password:
 ```
 #### 비밀번호 입력 후 정상적으로 데이터베이스에 접근할 수 있습니다.
-
+![screenshots mysql_-u_root_-p.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/mysql_-u_root_-p.PNG)
 # Python 을 통한 MySQL 접근 테스트 -- 2020/11/18
 #### python 3.8.5 ver 사용
 #### vi 에디터 사용
@@ -159,7 +159,7 @@ Home IOT Service development
   $ sudo nano 50-server.cnf
 ```
 ##### PORT = 3306 의 주석처리를 빼고 포트 번호 수정을 원한다면 원하는 번호로 수정이 가능합니다.
-![screenshots #port.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/#port.PNG)
+![screenshots #port.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/%23port.PNG)
 ## 2. MySQL DataBase 생성
 ------------------------------
 #### mysql에 접속합니다.
