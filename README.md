@@ -66,6 +66,8 @@ Home IOT Service development
 |host|user|password|
 |---|---|---|
 |localhost|root||
+
+
 ![screenshots select_password_1.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/select_password_1.PNG)
 ## 5. 비밀번호 변경
 --------------
