@@ -10,7 +10,7 @@ Home IOT Service development
 
 ## 라즈베리파이에서 MySQL 환경을 생성하기 전에 테스트를 위해 환경을 구성하였습니다.
 
-## 1. update & upgrade 진행
+## **1. update & upgrade 진행**
 ---------
 #### `apt-get update`, `apt-get upgrade` 명령어를 우선 진행합니다.
 ```
