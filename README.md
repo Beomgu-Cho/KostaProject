@@ -212,20 +212,53 @@ Home IOT Service development
 
 #### 여기까지의 과정으로 python을 이용한 MySQL 접근이 완료 되었습니다.
 
-### 4. 테이블 생성 및 변경
+### 4. 테이블 생성 및 수정
 --------
+#### 4-1. 테이블 생성 및 수정
 #### pandas 라이브러리로 쉽게 DataFrame 을 생성할 수 있습니다.
 #### DataFrame 은 일반적인 DB Table과 동일한 형태를 가집니다.
 ```
   df1 = DataFrame([
-              {"dpetno": 300, "dname": "name1", "loc": "loc1"},
-              {"dpetno": 301, "dname": "name2", "loc": "loc2"},
-              {"dpetno": 302, "dname": "name3", "loc": "loc3"}
+              {"deptno": 300, "dname": "name1", "loc": "loc1"},
+              {"deptno": 301, "dname": "name2", "loc": "loc2"},
+              {"deptno": 302, "dname": "name3", "loc": "loc3"}
             ])
 ```
 #### df1 의 출력 결과는 아래와 같습니다.
-||dpetno|dname|loc|
-|---|:---:|---:|---:|
+||deptno|dname|loc|
+|---|---:|---:|---:|
 |0|300|`name1`|`loc1`|
 |1|301|`name2`|`loc2`|
 |2|302|`name2`|`loc2`|
+#### 생성한 DataFrame의 인덱스를 DataBase에 저장합니다.
+```
+  df1.to_sql(name="department_py", con=conn, if_exists='replace', index=True)
+```
+#### name      : 생성할 테이블명
+#### con       : sql connection 정보
+#### if_exists : 같은 이름의 테이블이 있을 때 수행할 명령입니다. 'replace'의 경우 덮어쓰기 입니다.
+#### index     : 열의 기본적인 번호를 새겨주는 index 열 생성 정보 입니다. False 일 경우 생성되지 않습니다.
+#### 위 명령어로 인해 MySQL서버의 project 데이터베이스에 'department_py' 라는 table이 형성되었습니다.
+#### 4-2. 테이블 조회
+#### mysql로 직접 들어가 생성되었는지 확인해봅니다.
+```
+  $ mysql -u root -p
+  비밀번호
+```
+```
+  MariaDB[(none)]> use project
+  MariaDB[project]> show tables;
+```
+#### show 명령어로 department_py 라는 테이블이 생성되었음을 확인할 수 있습니다.
+#### select 문으로 내용을 확인합니다.
+```
+  MariaDB[project]> select * from department_py;
+```
+#### 생성된 테이블은 아래와 같습니다.
+|index|deptno|dname|loc|
+|---|---:|---:|---:|
+|0|300|`name1`|`loc1`|
+|1|301|`name2`|`loc2`|
+|2|302|`name2`|`loc2`|
+#### index열을 없애고 싶다면 to_sql()함수에서 index=False로 변경하면 index열 없이 생성됩니다.
+
