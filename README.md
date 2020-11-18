@@ -123,3 +123,35 @@ Home IOT Service development
   Enter password:
 ```
 #### 비밀번호 입력 후 정상적으로 데이터베이스에 접근할 수 있습니다.
+
+
+
+# PyMySQL 라이브러리를 이용하여 Python으로 MySQL 접근 테스트 -- 2020/11/18
+#### python 3.8.5 ver 사용
+#### vi 에디터 사용
+#### 사용 라이브러리 : pymysql, sqlalchemy, pandas
+## python 을 이용하여 실시간으로 데이터베이스 수정 및 접근을 위해 테스트 하였습니다.
+
+### 1. MySQL 접속정보 체크
+#### 기본설정값을 이용하게 되지만 경우에 따라 PORT 번호가 주석처리 되어있을 수 있으므로 수정해야 합니다.
+#### 임의로 PORT 번호를 수정하는 것도 가능합니다.
+```
+  $ cd /etc/mysql/mariadb.conf.d
+  $ sudo nano 50-server.cnf
+```
+#### PORT = 3306 의 주석처리를 빼고 포트 번호 수정을 원한다면 원하는 번호로 수정이 가능합니다.
+
+### 2. python 실행
+#### python 실행에 앞서 필요 라이브러리를 다운 받아야 합니다.
+```
+  $ pip3 install pymysql
+  $ pip3 install sqlalchemy
+  $ pip3 install pandas
+```
+#### 2-1. 패키지 참조
+```
+  import pymysql
+  import pandas as pd
+  from sqlalchemy import create_engine
+  from pandas import DataFrame
+```
