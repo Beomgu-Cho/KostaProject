@@ -86,7 +86,7 @@ Home IOT Service development
 ------------
 #### localhost 이외의 사용자가 사용할 수 있게 접근 가능한 host 를 리스트에 추가해주어야 합니다.
 ```
-  MariaDB[mysql]> grant all privileges on *.*'root'@'%' identified by '0000';
+  MariaDB[mysql]> grant all privileges on *.* to 'root'@'%' identified by '0000';
 ```
 |host|user|password|
 |---|---|---|
