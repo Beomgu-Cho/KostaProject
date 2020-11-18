@@ -41,7 +41,7 @@ Home IOT Service development
 ```
   $ sudo mysql
 ```
-![Alt text](/screenshots/sudo_mysql.png)
+![screenshots use_mysql.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/use_mysql.PNG)
 ##### mysql 실행 후 sql 명령어를 이용할 땐 반드시 세미콜론(`;`)을 넣어야 해당 문장이 실행됩니다
 
 #### DB 리스트 확인
