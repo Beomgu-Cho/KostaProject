@@ -10,7 +10,7 @@ Home IOT Service development
 
 ## 라즈베리파이에서 MySQL 환경을 생성하기 전에 테스트를 위해 환경을 구성하였습니다.
 
-## **1. update & upgrade 진행**
+## 1. update & upgrade 진행
 ---------
 #### `apt-get update`, `apt-get upgrade` 명령어를 우선 진행합니다.
 ```
@@ -71,7 +71,7 @@ Home IOT Service development
   MariaDB[mysql]> update user set password=password('0000') where user='root';
 ```
 #### root 의 password를 0000으로 변경합니다.
-#### 원하는 비밀번호로 자유롭게 수정 가능합니다.
+###### 원하는 비밀번호로 자유롭게 수정 가능합니다.
 
 ```
   MariaDB[mysql]> select host, user, password from user;
@@ -95,8 +95,8 @@ Home IOT Service development
 
 
 #### 0000은 외부 사용자가 접근할 때 사용될 패스워드 입니다.
-#### 원하는 비밀번호로 자유롭게 수정 가능합니다.
-#### 참고로 특정 IP의 접근만을 허용할 경우 % 대신 해당 IP를 넣으면 됩니다.
+###### 원하는 비밀번호로 자유롭게 수정 가능합니다.
+###### 참고로 특정 IP의 접근만을 허용할 경우 % 대신 해당 IP를 넣으면 됩니다.
 #### 업데이트가 끝나면 `flush` 명령어로 적용시킵니다.
 ```
   MariaDB[mysql]> flush privileges;
@@ -149,7 +149,7 @@ Home IOT Service development
   $ cd /etc/mysql/mariadb.conf.d
   $ sudo nano 50-server.cnf
 ```
-#### PORT = 3306 의 주석처리를 빼고 포트 번호 수정을 원한다면 원하는 번호로 수정이 가능합니다.
+##### PORT = 3306 의 주석처리를 빼고 포트 번호 수정을 원한다면 원하는 번호로 수정이 가능합니다.
 
 ## 2. MySQL DataBase 생성
 ------------------------------
@@ -220,7 +220,7 @@ Home IOT Service development
   import MySQLdb
 ```
 #### sqlalchemy의 `create_engine()` 함수로 데이터베이스에 접속합니다.
-#### 인수는 위에서 생성한 con_str과 CHARTSET2를 사용합니다.
+###### 인수는 위에서 생성한 con_str과 CHARTSET2를 사용합니다.
 ```
   engine = create_engine(con_str, encoding=CHARSET2)
   conn = engine.connect()
