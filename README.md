@@ -5,7 +5,8 @@ Home IOT Service development
 
 
 # Ubuntu에 MySQL, MariaDB 설치 및 실행 -- 2020/11/17
-![screenshots mariadb_image.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/mariadb_image.png)
+![screenshots mariadb_image.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/mariadb_image.png, https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/ubuntu_image.png)
+
 #### 실행 환경 Oracle VM VirtualBox 런처 Ubuntu 20.04.1
 
 ## 라즈베리파이에서 MySQL 환경을 생성하기 전에 테스트를 위해 환경을 구성하였습니다.
@@ -101,7 +102,7 @@ Home IOT Service development
 #### 0000은 외부 사용자가 접근할 때 사용될 패스워드 입니다.
 ###### 원하는 비밀번호로 자유롭게 수정 가능합니다.
 ###### 참고로 특정 IP의 접근만을 허용할 경우 % 대신 해당 IP를 넣으면 됩니다.
-![screenshots grant_'%'.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/grant_'%'.PNG)
+![screenshots grant_'%'.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/grant_'%25'.PNG)
 #### 업데이트가 끝나면 `flush` 명령어로 적용시킵니다.
 ```
   MariaDB[mysql]> flush privileges;
