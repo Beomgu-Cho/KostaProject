@@ -224,8 +224,8 @@ Home IOT Service development
             ])
 ```
 #### df1 의 출력 결과는 아래와 같습니다.
-|dpetno|dname|loc|
-|---|:---:|---|
-|300|`name1`|`loc1`|
-|301|`name2`|`loc2`|
-|302|`name2`|`loc2`|
+||dpetno|dname|loc|
+|---|:---:|---:|---:|
+|0|300|`name1`|`loc1`|
+|1|301|`name2`|`loc2`|
+|2|302|`name2`|`loc2`|
