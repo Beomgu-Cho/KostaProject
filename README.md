@@ -180,7 +180,10 @@ Home IOT Service development
   $ pip3 install sqlalchemy
   $ pip3 install pandas
 ```
-
+#### 만약 pip 에러가 발생한다면 pip 패키지의 설치 여부를 확인해보아야 합니다.
+```
+  $ sudo apt-get install python3-pip
+```
 ### 3-2. 패키지 참조
 ```
   import pymysql
