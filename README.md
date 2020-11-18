@@ -275,4 +275,9 @@ Home IOT Service development
 |1|301|`name2`|`loc2`|
 |2|302|`name2`|`loc2`|
 #### index열을 없애고 싶다면 `to_sql()`함수에서 `index=False`로 변경하면 index열 없이 생성됩니다.
-
+#### 4-3. 데이터베이스 연결 해제
+#### 테이블 생성이 끝났다면 접속을 해제해야 합니다.
+#### 위에서 선언한 conn을 닫는 것으로 접속 해제가 가능합니다.
+```
+  conn.close()
+```
