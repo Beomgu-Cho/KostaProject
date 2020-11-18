@@ -135,7 +135,7 @@ Home IOT Service development
 ```
 #### 비밀번호 입력 후 정상적으로 데이터베이스에 접근할 수 있습니다.
 
-# PyMySQL 라이브러리를 이용하여 Python으로 MySQL 접근 테스트 -- 2020/11/18
+# Python 을 통한 MySQL 접근 테스트 -- 2020/11/18
 #### python 3.8.5 ver 사용
 #### vi 에디터 사용
 #### 사용 라이브러리 : `pymysql`, `sqlalchemy`, `pandas`
