@@ -5,8 +5,8 @@ Home IOT Service development
 
 
 # Ubuntu에 MySQL, MariaDB 설치 및 실행 -- 2020/11/17
-![screenshots mariadb_image.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/mariadb_image.png, https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/ubuntu_image.png)
-
+![screenshots mariadb_image.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/mariadb_image.png)
+![screenshots ubuntu_image.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/ubuntu_image.png)
 #### 실행 환경 Oracle VM VirtualBox 런처 Ubuntu 20.04.1
 
 ## 라즈베리파이에서 MySQL 환경을 생성하기 전에 테스트를 위해 환경을 구성하였습니다.
