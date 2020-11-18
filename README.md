@@ -59,7 +59,7 @@ Home IOT Service development
   MariaDB[mysql]> select host, user, password from user;
 ```
 #### user 테이블의 host, user, password 가 출력됩니다.
--결과
+
 |host|user|password|
 |---|---|---|
 |localhost|root||
