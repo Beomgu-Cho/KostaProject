@@ -5,7 +5,7 @@ Home IOT Service development
 
 
 # Ubuntu에 MySQL, MariaDB 설치 및 실행 -- 2020/11/17
-
+![screenshots mariadb_image.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/mariadb_image.PNG)
 #### 실행 환경 Oracle VM VirtualBox 런처 Ubuntu 20.04.1
 
 ## 라즈베리파이에서 MySQL 환경을 생성하기 전에 테스트를 위해 환경을 구성하였습니다.
@@ -41,20 +41,21 @@ Home IOT Service development
 ```
   $ sudo mysql
 ```
-![screenshots use_mysql.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/use_mysql.PNG)
+![screenshots sudo_mysql.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/sudo_mysql.PNG)
 ##### mysql 실행 후 sql 명령어를 이용할 땐 반드시 세미콜론(`;`)을 넣어야 해당 문장이 실행됩니다
 
 #### DB 리스트 확인
 ```
   MariaDB[(none)]> show databases;
 ```
-
+![screenshots show_databese.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/show_databases.PNG)
 #### mysql 데이터베이스에 접속
 ```
   MariaDB[(none)]> use mysql;
 ```
 #### 접속에 성공하면 MariaDB[(none)] 이
 #### MariaDB[mysql] 로 바뀝니다.
+![screenshots use_mysql.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/use_mysql.PNG)
 
 ```
   MariaDB[mysql]> select host, user, password from user;
@@ -64,7 +65,7 @@ Home IOT Service development
 |host|user|password|
 |---|---|---|
 |localhost|root||
-
+![screenshots select_password_1.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/select_password_1.PNG)
 ## 5. 비밀번호 변경
 --------------
 #### 이제 root의 password를 변경시켜주기 위해 update 명령어를 사용합니다.
@@ -81,6 +82,8 @@ Home IOT Service development
 |host|user|password|
 |---|---|---|
 |localhost|root|\*97E7471D816A37E38510728AEA47440F9C6E2585|
+
+![screenshots update_password.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/update_password.PNG)
 #### 여기에서 보이는 password 는 암호화가 된 password 이기 때문에 원래 입력한 문자와는 다르게 보입니다.
 
 ## 6. 접근 가능한 host 추가
@@ -98,11 +101,14 @@ Home IOT Service development
 #### 0000은 외부 사용자가 접근할 때 사용될 패스워드 입니다.
 ###### 원하는 비밀번호로 자유롭게 수정 가능합니다.
 ###### 참고로 특정 IP의 접근만을 허용할 경우 % 대신 해당 IP를 넣으면 됩니다.
+![screenshots grant_'%'.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/grant_'%'.PNG)
 #### 업데이트가 끝나면 `flush` 명령어로 적용시킵니다.
 ```
   MariaDB[mysql]> flush privileges;
 ```
-
+![screenshots flush.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/flush.PNG)
+#### 모든 작업이 완료되면 `exit` 명령으로 mysql을 종료합니다.
+![screenshots db_exit.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/db_exit.PNG)
 ## 7. 50-server.cnf 수정
 -----------
 ```
@@ -129,6 +135,7 @@ Home IOT Service development
   MariaDB[mysql]> update user set plugin='mysql_native_password' where user='root';
   MariaDB[mysql]> flush privileges;
 ```
+![screenshots update_plugin.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/update_plugin.PNG)
 #### 이로써 관리자 권한 없이도 root 비밀번호를 통해 데이터베이스에 접근이 가능해졌습니다.
 ```
   $ mysql -u root -p
@@ -151,7 +158,7 @@ Home IOT Service development
   $ sudo nano 50-server.cnf
 ```
 ##### PORT = 3306 의 주석처리를 빼고 포트 번호 수정을 원한다면 원하는 번호로 수정이 가능합니다.
-
+![screenshots #port.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/#port.PNG)
 ## 2. MySQL DataBase 생성
 ------------------------------
 #### mysql에 접속합니다.
@@ -166,12 +173,11 @@ Home IOT Service development
 ```
 #### project 라는 이름의 데이터베이스가 생성되었습니다.
 #### project 대신 생성하고자 하는 데이터베이스명을 입력하면 원하는 이름으로 생성 가능합니다.
-
 #### 데이터베이스 생성 확인
 ```
   MariaDB[(none)]> show databases;
 ```
-
+![screenshots create_database.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/create_database.PNG)
 ## 3. PYTHON
 -----------------------
 ### 3-1. 라이브러리 설치
@@ -281,6 +287,7 @@ Home IOT Service development
 |0|300|`name1`|`loc1`|
 |1|301|`name2`|`loc2`|
 |2|302|`name2`|`loc2`|
+![screenshots department_py.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/department_py.PNG)
 #### index열을 없애고 싶다면 `to_sql()`함수에서 `index=False`로 변경하면 index열 없이 생성됩니다.
 
 ### 4-3. 데이터베이스 연결 해제
