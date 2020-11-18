@@ -133,6 +133,7 @@ Home IOT Service development
 ## python 을 이용하여 실시간으로 데이터베이스 수정 및 접근을 위해 테스트 하였습니다.
 
 ### 1. MySQL 접속정보 체크
+--------------------------------
 #### 기본설정값을 이용하게 되지만 경우에 따라 PORT 번호가 주석처리 되어있을 수 있으므로 수정해야 합니다.
 #### 임의로 PORT 번호를 수정하는 것도 가능합니다.
 ```
@@ -141,17 +142,90 @@ Home IOT Service development
 ```
 #### PORT = 3306 의 주석처리를 빼고 포트 번호 수정을 원한다면 원하는 번호로 수정이 가능합니다.
 
-### 2. python 실행
+### 2. MySQL DataBase 생성
+------------------------------
+#### mysql에 접속합니다.
+```
+  $ mysql -u root -p
+  비밀번호 입력
+```
+#### sql create 문으로 데이터베이스를 생성합니다.
+```
+  MariaDB[(none)]> create database project;
+```
+#### project 라는 이름의 데이터베이스가 생성되었습니다.
+#### project 대신 생성하고자 하는 데이터베이스명을 입력하면 원하는 이름으로 생성 가능합니다.
+#### 데이터베이스 생성 확인
+```
+  MariaDB[(none)]> show databases;
+```
+
+### 3. PYTHON
+#### 3-1. 라이브러리 설치
 #### python 실행에 앞서 필요 라이브러리를 다운 받아야 합니다.
 ```
   $ pip3 install pymysql
   $ pip3 install sqlalchemy
   $ pip3 install pandas
 ```
-#### 2-1. 패키지 참조
+#### 3-2. 패키지 참조
 ```
   import pymysql
   import pandas as pd
   from sqlalchemy import create_engine
   from pandas import DataFrame
 ```
+#### 3-3. MySQL 연동 정보
+#### 변수로 미리 연동 정보를 선언해 놓습니다.
+```
+  HOSTNAME = "localhost"
+  PORT = 3306            # 변경했을 경우 변경한 포트번호
+  USERNAME = "root"
+  PASSWORD = "0000"      # MySQL 접속 유저 패스워드
+  DATABASE = "project"
+  CHARSET1 = "utf8"
+  CHARSET2 = "utf-8"
+```
+#### 3-4. 접속 문자열 생성
+#### MySQL 접속을 위한 문자열을 미리 생성해놓습니다.
+```
+  con_str_fmt = "mysql+mysqldb://{0}:{1}@{2}:{3}/{4}?charset={5}"
+  con_str = con_str_fmt.format(USERNAME, PASSWORD, HOSTNAME, PORT, DATABASE, CHARSET1)
+```
+
+-con_str 출력 결과
+```
+  > 'mysql+mysqldb://root:0000@localhost:3306:/project?charset=utf8'
+```
+#### 3-5. pymysql을 사용하여 MySQL 연동 객체 설치
+#### pymysql 라이브러리에서 제공하는 install_as_MySQLdb() 함수를 사용하여 MySQL과 연동합니다..
+```
+  pymysql.install_as_MySQLdb()
+  import MySQLdb
+```
+#### sqlalchemy의 create_engine() 함수로 데이터베이스에 접속합니다.
+#### 인수는 위에서 생성한 con_str과 CHARTSET2를 사용합니다.
+```
+  engine = create_engine(con_str, encoding=CHARSET2)
+  conn = engine.connect()
+```
+
+#### 여기까지의 과정으로 python을 이용한 MySQL 접근이 완료 되었습니다.
+
+### 4. 테이블 생성 및 변경
+--------
+#### pandas 라이브러리로 쉽게 DataFrame 을 생성할 수 있습니다.
+#### DataFrame 은 일반적인 DB Table과 동일한 형태를 가집니다.
+```
+  df1 = DataFrame([
+              {"dpetno": 300, "dname": "name1", "loc": "loc1"},
+              {"dpetno": 301, "dname": "name2", "loc": "loc2"},
+              {"dpetno": 302, "dname": "name3", "loc": "loc3"}
+            ])
+```
+#### df1 의 출력 결과는 아래와 같습니다.
+|dpetno|dname|loc|
+|---|:---:|---|
+|300|`name1`|`loc1`|
+|301|`name2`|`loc2`|
+|302|`name2`|`loc2`|
