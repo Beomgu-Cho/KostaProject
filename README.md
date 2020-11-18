@@ -290,6 +290,8 @@ Home IOT Service development
 |0|300|`name1`|`loc1`|
 |1|301|`name2`|`loc2`|
 |2|302|`name2`|`loc2`|
+
+
 ![screenshots department_py.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/department_py.PNG)
 #### index열을 없애고 싶다면 `to_sql()`함수에서 `index=False`로 변경하면 index열 없이 생성됩니다.
 
