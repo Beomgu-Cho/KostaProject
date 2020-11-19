@@ -301,3 +301,75 @@ Home IOT Service development
 ```
   conn.close()
 ```
+
+# RaspberryPi SQL환경 테스트
+#### Raspberry 4 모델 사용 16GB Storage
+#### 제어환경 windows 10 원격데스크톱
+
+## 1. 라즈베리파이 MySQL 설치 및 테스트
+-----------
+#### Ubuntu 환경과 동일하게 진행한 결과 이상없이 환경 구성에 성공하였습니다.
+![screenshots raspberry_test.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/20201119/raspberry_test.PNG)
+
+## 2. 외부접근 테스트
+----------
+#### 접근 환경은 가상머신 Ubuntu 에서 RaspberryPi 로 접근하는 것을 테스트 하였습니다.
+
+### 2-1. 라즈베리파이 IP 설정
+#### 우선 현재 라즈베리파이의 IP를 체크합니다. 접속 환경은 Wi-Fi 입니다.
+```
+  $ ifconfig
+```
+![screenshots ifconfig.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/20201119/ifconfig.PNG)
+#### ifconfig 정보에서 Wi-Fi 환경이 맞다면 wlan0에 보이는 ip 정보를 기억해야 합니다.
+###### `inet`, `netmask`, `broadcast`
+###### 일반적으로 network gateway는 xxx.xxx.xxx.1 이고 network ip 는 xxx.xxx.xxx.0 입니다.
+
+#### 이제 라즈베리파이에 고정 IP를 할당해야 합니다. Wi-Fi 고정IP 할당을 하기 위해 파일의 텍스트를 수정해야 합니다.
+```
+  $ sudo nano /etc/network/interfaces
+```
+![screenshots nano_interfaces.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/20201119/nano_interfaces.PNG)
+#### 위의 이미지와 같이 내용을 추가하시면 됩니다.
+#### wlan0 는 고정할 IP의 정보
+#### wlan1 은 만약 다른 네트워크 망에 접속할 경우 할당받을 공간을 남겨놓는 것입니다.
+
+#### 정상적으로 완료했다면 재부팅을 하여 IP를 확인하면 됩니다.
+
+### 2-2. 접근 허용 아이피 설정
+```
+  $ sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+```
+#### bind_address 부분을 수정합니다.
+#### 특정 IP의 접근을 원한다면 network ip 를 입력하면 됩니다.
+#### bind_address = 0.0.0.0 으로 설정하면 모든 IP에서 접근이 가능합니다.
+![screenshots bind_address.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/20201119/bind_address.PNG)
+
+### 2-3. DataBase 수정
+#### Ubuntu와 RaspberryPi를 구분하기 위해 추가 테이블을 생성합니다.
+#### python 코드에 df2 부분을 추가하여 생성했습니다.
+![screenshots new_table.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/20201119/raspi_new_table.PNG)
+
+### 2-4. Ubuntu 에서 MySQL 원격 접속
+#### MySQL 커멘드에 `-h [라즈베리파이 IP]` 를 추가하여 IP 접속을 요청합니다.
+```
+  $ mysql -u root -h 192.168.0.185 -p
+```
+#### 이후 DataBase 접속 및 Table 을 확인합니다.
+```
+  MariaDB[(none)]> use project
+  MariaDB[project]> show tables;
+```
+|Tables_in_project|
+|---|
+|department_py|
+|test_py|
+```
+  MariaDB[project]> select * from test_py;
+```
+|index|user:|input:|output:|
+|0|root|in|welcome|
+|1|host|in|welcome|
+|2|guest|out|goodbye|
+![screenshots ubunto_to_raspi.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/20201119/ubuntu_to_raspi.PNG)
+#### 정상적으로 확인이 완료되었습니다.
