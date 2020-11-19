@@ -367,8 +367,8 @@ Home IOT Service development
 ```
   MariaDB[project]> select * from test_py;
 ```
-|index|user:|input:|output:|
-|---|---:|---:|---:|
+|index|user|input|output|
+|---|---|---|---|
 |0|root|in|welcome|
 |1|host|in|welcome|
 |2|guest|out|goodbye|
