@@ -302,7 +302,7 @@ Home IOT Service development
   conn.close()
 ```
 
-# RaspberryPi SQL환경 테스트
+# RaspberryPi SQL환경 테스트 -- 2020/11/19
 #### Raspberry 4 모델 사용 16GB Storage
 #### 제어환경 windows 10 원격데스크톱
 
