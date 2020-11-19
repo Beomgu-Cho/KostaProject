@@ -364,6 +364,8 @@ Home IOT Service development
 |---|
 |department_py|
 |test_py|
+
+
 ```
   MariaDB[project]> select * from test_py;
 ```
@@ -372,5 +374,7 @@ Home IOT Service development
 |0|root|in|welcome|
 |1|host|in|welcome|
 |2|guest|out|goodbye|
+
+
 ![screenshots ubunto_to_raspi.png](https://github.com/Beomgu-Cho/KostaProject/blob/main/screenshots/20201119/ubuntu_to_raspi.PNG)
 #### 정상적으로 확인이 완료되었습니다.
